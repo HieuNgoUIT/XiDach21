@@ -38,22 +38,32 @@ class Game():
         return deck.pop()
 
     def start(self):
+        a, b = self.get_two_card(self.deck)
+        self.host.append_card(a)
+        self.host.append_card(b)
         for player in self.players:
             a, b = self.get_two_card(self.deck)
             player.append_card(a)
             player.append_card(b)
 
 if __name__ == "__main__":
-    my_deck = Deck()
     ps = []
     p1 = Person()
     p2 = Person()
+    p3 = Person()
     ps.append(p1)
     ps.append(p2)
+    ps.append(p3)
+    
     mydeck = Deck()
-    mygame = Game(ps,1,my_deck)
+    
+    mygame = Game(ps,1,mydeck)
     mygame.start()
+    
     print(mygame.players[0].person_cards)
+    print(mygame.players[1].person_cards)
+    print(mygame.host.person_cards)
+
    
 
     
